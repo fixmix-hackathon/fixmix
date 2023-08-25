@@ -47,6 +47,45 @@ const Chat = ({ role, content }: Message) => {
                             : "https://openmoji.org/data/color/svg/1F473.svg"
                     }
                 />
+                                <Flex
+                    borderWidth={1}
+                    borderColor="blue.400"
+                    bg="main-bg"
+                    p="0.5rem 1rem"
+                    w="auto"
+                    mt="16"
+                    rounded={
+                        role === "assistant" ? "0 20px 20px 20px" : "20px 0 20px 20px"
+                    }
+                    fontSize={{ base: "8px", md: "18px" }}
+                    flexDir="column"
+                >
+                    {role === "assistant" && (
+                        <Flex
+                            alignSelf="flex-end"
+                            fontStyle="italic"
+                            opacity={0.4}
+                            fontSize="8px"
+                            as="small"
+                            fontWeight={500}
+                        >
+                            GPT
+                        </Flex>
+                    )}
+                    { role === "user" && (
+                        <Flex
+                            alignSelf="flex-start"
+                            fontStyle="italic"
+                            opacity={0.4}
+                            fontSize="8px"
+                            as="small"
+                            fontWeight={500}
+                        >
+                            あなた
+                        </Flex>
+                    )}
+                    { role === "assistant" ? chatMessage || "" : content || "" }
+                </Flex>
             </Flex>
         </motion.div>
     )
