@@ -1,10 +1,8 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import Footer from './footer'
 import Header from './header'
-
-const inter = Inter({ subsets: ['latin'] })
+import Main from "./main";
 
 export const metadata: Metadata = {
   title: 'fix-mix（仮）',
@@ -14,13 +12,17 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="ja">
-      <Header />
-      <body className={inter.className}>{children}</body>
-      <Footer />
+      <link rel="icon" href="/favicon.ico" sizes="any" />
+      <head />
+      <body className="min-h-screen bg-white md:bg-gray-100">
+        <Header />
+        <Main>{children}</Main>
+        <Footer />
+      </body>
     </html>
   )
 }
