@@ -1,8 +1,24 @@
 import { Message } from "../types/custom"
 import { motion } from "framer-motion"
 import { Avatar, Flex } from "@chakra-ui/react"
+import { useEffect, useState } from "react"
 
 const Chat = ({ role, content }: Message) => {
+    const [chatMessage, setChatMessage] = useState("")
+    const [currentIndex, setCurrentIndex] = useState(0)
+
+    useEffect(() => {
+        if (currentIndex < content.length) {
+            const timeoutId = setTimeout(() => {
+                setChatMessage((prevText) => prevText + content[currentIndex])
+                setCurrentIndex((prevIndex) => prevIndex + 1)
+            }, 40)
+            return () => {
+                clearTimeout(timeoutId)
+            }
+        }
+    }, [content, currentIndex])
+
     return (
         <motion.div
             style={{
