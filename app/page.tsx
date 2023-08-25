@@ -8,16 +8,29 @@ import Chat from "./components/Chat"
 import InputForm from "./components/InputForm"
 import { Message } from "./types/custom"
 import ThreeDotsLoader from "./components/ThreeDotsLoader"
+import { system_prompt } from "./constants/constants"
+import { useEffect } from "react"
 
 const Home: NextPage = () => {
-  const [chats, setchats] = useState<Message[]>([
+  const storedChats = JSON.parse(localStorage.getItem('chats') || '[]').map((chat: Message) => ({
+    ...chat,
+    fromStorage: true,
+  }))
+  const initialChats = storedChats.length > 0 ? storedChats : [
     {
       role: "system",
-      content: "#", // Python側から取得？
-    }
-  ])
+      content: system_prompt,
+    },
+  ]
+
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+
+  useEffect(() => {
+    if (chats.length > 0) {
+      localStorage.setItem('chats', JSON.stringify(chats));
+    }
+  }, [chats])
 
   const handleSubmit = async (message: Message) => {
     try {
@@ -58,7 +71,7 @@ const Home: NextPage = () => {
       <div className="mb-10">
         <AnimatePresence>
           {chats.slice(1, chats.length).map((chat, index) => {
-            return <Chat role={chat.role} content={chat.content} key={index} />;
+            return <Chat role={chat.role} content={chat.content} key={index} fromStorage={chat.fromStorage} />;
           })}
         </AnimatePresence>
       </div>

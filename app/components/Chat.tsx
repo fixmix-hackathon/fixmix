@@ -4,12 +4,15 @@ import { Avatar, Flex } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import * as marked from 'marked';
 
-const Chat = ({ role, content }: Message) => {
+const Chat = ({ role, content, fromStorage }: Message) => {
     const [chatMessage, setChatMessage] = useState("")
     const [currentIndex, setCurrentIndex] = useState(0)
 
     useEffect(() => {
-        if (currentIndex < content.length) {
+        console.log('fromStorage:', fromStorage);
+        if (fromStorage) {
+            setChatMessage(content);
+        } else if (currentIndex < content.length) {
             const isNextPunctuation = [",", "。", "、", "!", "！", "？", "?"].includes(content[currentIndex - 1] || "")
 
             const isEnglish = /^[a-zA-Z\s]+$/.test(content[currentIndex])
@@ -24,7 +27,7 @@ const Chat = ({ role, content }: Message) => {
                 clearTimeout(timeoutId)
             }
         }
-    }, [content, currentIndex])
+    }, [content, currentIndex, fromStorage])
 
     return (
         <motion.div
@@ -36,7 +39,7 @@ const Chat = ({ role, content }: Message) => {
                 opacity: 0,
                 translateY: "100%",
             }}
-            animate={{ opacity: 1, translateY: 0, transition: { duration: 0.3 }}}
+            animate={{ opacity: 1, translateY: 0, transition: { duration: 1.0 }}}
             exit={{ opacity: 0, translateY: 0}}
         >
             <Flex
@@ -54,7 +57,7 @@ const Chat = ({ role, content }: Message) => {
                             : "https://openmoji.org/data/color/svg/1F473.svg"
                     }
                 />
-                                <Flex
+                <Flex
                     borderWidth={1}
                     borderColor="blue.400"
                     bg="main-bg"
@@ -94,7 +97,8 @@ const Chat = ({ role, content }: Message) => {
                             あなた
                         </Flex>
                     )}
-                    { role === "assistant" ? <div dangerouslySetInnerHTML={{ __html: marked.parse(chatMessage) }} /> : <div dangerouslySetInnerHTML={{ __html: marked.parse(content) }} /> }
+                    { role === "assistant" ? <div dangerouslySetInnerHTML={{ __html: marked.parse(chatMessage) }} />
+                    : <div dangerouslySetInnerHTML={{ __html: marked.parse(content) }} /> }
                 </Flex>
             </Flex>
         </motion.div>
