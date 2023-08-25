@@ -46,8 +46,8 @@ const Chat = ({ role, content }: Message) => {
             >
                 <Avatar
                     name={role === "user" ? "Me" : "GPT"}
-                    w="35px"
-                    h="35px"
+                    w="40px"
+                    h="40px"
                     src={
                         role === "assistant"
                             ? "https://openmoji.org/data/color/svg/1F9DE.svg"
@@ -70,7 +70,7 @@ const Chat = ({ role, content }: Message) => {
                 >
                     {role === "assistant" && (
                         <Flex
-                            alignSelf="flex-end"
+                            alignSelf="flex-start"
                             fontStyle="italic"
                             opacity={0.4}
                             fontSize="8px"
