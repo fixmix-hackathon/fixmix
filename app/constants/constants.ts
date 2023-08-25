@@ -1,0 +1,1 @@
+export const siteTitle = "fixmix（仮）";
