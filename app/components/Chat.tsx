@@ -2,6 +2,7 @@ import { Message } from "../types/custom"
 import { motion } from "framer-motion"
 import { Avatar, Flex } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
+import * as marked from 'marked';
 
 const Chat = ({ role, content }: Message) => {
     const [chatMessage, setChatMessage] = useState("")
@@ -93,7 +94,7 @@ const Chat = ({ role, content }: Message) => {
                             あなた
                         </Flex>
                     )}
-                    { role === "assistant" ? chatMessage || "" : content || "" }
+                    { role === "assistant" ? <div dangerouslySetInnerHTML={{ __html: marked.parse(chatMessage) }} /> : <div dangerouslySetInnerHTML={{ __html: marked.parse(content) }} /> }
                 </Flex>
             </Flex>
         </motion.div>
