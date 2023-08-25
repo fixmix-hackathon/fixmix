@@ -65,6 +65,7 @@ const Chat = ({ role, content }: Message) => {
                     }
                     fontSize={{ base: "8px", md: "18px" }}
                     flexDir="column"
+                    color="black"
                 >
                     {role === "assistant" && (
                         <Flex
@@ -74,6 +75,7 @@ const Chat = ({ role, content }: Message) => {
                             fontSize="8px"
                             as="small"
                             fontWeight={500}
+                            color="black"
                         >
                             GPT
                         </Flex>
@@ -86,6 +88,7 @@ const Chat = ({ role, content }: Message) => {
                             fontSize="8px"
                             as="small"
                             fontWeight={500}
+                            color="black"
                         >
                             あなた
                         </Flex>
