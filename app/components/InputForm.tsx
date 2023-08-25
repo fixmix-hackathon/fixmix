@@ -31,6 +31,13 @@ const InputForm = ({ onSubmit }: InputFormProps) => {
                 ref={textareaRef}
                 className="flex-grow text-gray-600 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:border-blue-300"
                 placeholder="メッセージを入力..."
+                onKeyPress={(e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault(); // デフォルトの改行動作をキャンセル
+                        handleSubmit(e); // 送信処理を呼び出す
+                        console.log('Enter key pressed!!!');
+                    }
+                }}
             />
         <button
             type="submit"
