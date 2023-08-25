@@ -1,6 +1,8 @@
 "use client"
 
 import { NextPage } from "next";
+import InputForm from "./components/InputForm"
+import ThreeDotsLoader from "./components/ThreeDotsLoader"
 
 const Home: NextPage = () => {
   return (
