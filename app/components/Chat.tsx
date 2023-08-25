@@ -1,6 +1,6 @@
 import { Message } from "../types/custom"
 import { motion } from "framer-motion"
-import { Flex } from "@chakra-ui/react"
+import { Avatar, Flex } from "@chakra-ui/react"
 
 const Chat = ({ role, content }: Message) => {
     return (
@@ -21,10 +21,19 @@ const Chat = ({ role, content }: Message) => {
                 w="full"
                 flexDir={role === "assistant" ? "row" : "row-reverse"}
             >
+                <Avatar
+                    name={role === "user" ? "Me" : "GPT"}
+                    w="35px"
+                    h="35px"
+                    src={
+                        role === "assistant"
+                            ? "https://openmoji.org/data/color/svg/1F9DE.svg"
+                            : "https://openmoji.org/data/color/svg/1F473.svg"
+                    }
+                />
             </Flex>
         </motion.div>
     )
-}
 }
 
 export default Chat
