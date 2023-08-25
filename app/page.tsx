@@ -3,6 +3,7 @@
 import { Flex } from "@chakra-ui/react"
 import type { NextPage } from "next"
 import { useState } from "react"
+import { AnimatePresence } from "framer-motion"
 import Chat from "./components/Chat"
 import InputForm from "./components/InputForm"
 import { Message } from "./types/custom"
@@ -53,10 +54,17 @@ const Home: NextPage = () => {
   }
 
   return (
-    <div className="w-full max-w-2xl bg-white p-4 my-10">
-    
+    <div className="w-full max-w-2xl bg-white md:rounded-lg md:shadow-md p-4 md:p-10 my-10">
+      <div className="mb-10">
+        <AnimatePresence>
+          {chats.slice(1, chats.length).map((chat, index) => {
+            return <Chat role={chat.role} content={chat.content} key={index} />;
+          })}
+        </AnimatePresence>
+      </div>
+      <InputForm onSubmit={handleSubmit} />
     </div>
-  );
-};
+  )
+}
 
 export default Home
