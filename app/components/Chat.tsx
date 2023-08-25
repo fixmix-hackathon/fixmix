@@ -9,10 +9,16 @@ const Chat = ({ role, content }: Message) => {
 
     useEffect(() => {
         if (currentIndex < content.length) {
+            const isNextPunctuation = [",", "。", "、", "!", "！", "？", "?"].includes(content[currentIndex - 1] || "")
+
+            const isEnglish = /^[a-zA-Z\s]+$/.test(content[currentIndex])
+            
+            const delay = isNextPunctuation ? 280 : isEnglish ? 20 : 55
+
             const timeoutId = setTimeout(() => {
                 setChatMessage((prevText) => prevText + content[currentIndex])
                 setCurrentIndex((prevIndex) => prevIndex + 1)
-            }, 40)
+            }, delay)
             return () => {
                 clearTimeout(timeoutId)
             }
