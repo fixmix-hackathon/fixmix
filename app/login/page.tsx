@@ -72,8 +72,7 @@ export default function Google(){
             queryParams={{
                 access_type: 'offline',
                 prompt: 'consent',
-                hd: 'domain.com',
-                redirectTo: 'https://fam-message.vercel.app/'
+                redirectTo: 'https://znduoxdtpsjpugmsursb.supabase.co/auth/v1/callback'
             }}
             onlyThirdPartyProviders
         />
