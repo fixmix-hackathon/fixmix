@@ -1,13 +1,26 @@
-import { siteTitle } from "./constants/constants";
+import { siteTitle } from "./constants/constants"
+import Link from "next/link"
 
 const Header = () => {
     return (
-        <header className="text-center py-5 bg-white shadow-md sticky top-0 z-10">
-        <h1 className="text-sm md:text-1xl text-gray-600 font-semibold px-4 whitespace-pre-line">
+        <header
+        >
+        <div className="flex justify-between px-8">
+            <Link
+            href="/"
+            className="text-sm md:text-1xl text-gray-600 font-semibold whitespace-pre-line"
+            >
             {siteTitle}
-        </h1>
+            </Link>
+            <Link
+            href="/login"
+            className="text-sm md:text-1xl text-gray-600 font-semibold whitespace-pre-line"
+            >
+            ログイン
+            </Link>
+        </div>
         </header>
-    );
-};
+    )
+}
 
 export default Header
