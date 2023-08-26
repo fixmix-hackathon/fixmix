@@ -7,25 +7,31 @@ import { AnimatePresence } from "framer-motion"
 import Chat from "./components/Chat"
 import InputForm from "./components/InputForm"
 import { Message } from "./types/custom"
-// import ThreeDotsLoader from "./components/ThreeDotsLoader"
+import ThreeDotsLoader from "./components/ThreeDotsLoader"
 import { system_prompt } from "./constants/constants"
 import { useEffect } from "react"
 
 const Home: NextPage = () => {
-  const storedChats = JSON.parse(localStorage.getItem('chats') || '[]').map((chat: Message) => ({
-    ...chat,
-    fromStorage: true,
-  }))
-  const initialChats = storedChats.length > 0 ? storedChats : [
+  const [chats, setChats] = useState<Message[]>([
     {
       role: "system",
       content: system_prompt,
     },
-  ]
-
-  const [chats, setChats] = useState<Message[]>(initialChats);  
+  ])
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+
+  useEffect(() => {
+    const storedChats = JSON.parse(localStorage.getItem('chats') || '[]').map(
+      (chat: Message) => ({
+        ...chat,
+        fromStorage: true,
+      })
+    )
+    if (storedChats.length > 0) {
+      setChats(storedChats)
+    }
+  }, [])
 
   useEffect(() => {
     if (chats.length > 0) {
@@ -77,7 +83,7 @@ const Home: NextPage = () => {
         </AnimatePresence>
         {isSubmitting && (
           <Flex alignSelf="flex-start" px="2rem" py="0.5rem">
-            {/* <ThreeDotsLoader /> */}
+            <ThreeDotsLoader />
           </Flex>
         )}
       </div>
