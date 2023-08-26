@@ -20,7 +20,7 @@ const Chat = ({ role, content, fromStorage }: Message) => {
 
             const isEnglish = /^[a-zA-Z\s]+$/.test(content[currentIndex])
             
-            const delay = isNextPunctuation ? 280 : isEnglish ? 20 : 55
+            const delay = isNextPunctuation ? 280 : isEnglish ? 20 : 45
 
             const timeoutId = setTimeout(() => {
                 setChatMessage((prevText) => prevText + content[currentIndex])
@@ -43,7 +43,7 @@ const Chat = ({ role, content, fromStorage }: Message) => {
                 opacity: 0,
                 translateY: "100%",
             }}
-            animate={{ opacity: 1, translateY: 0, transition: { duration: 1.0 }}}
+            animate={{ opacity: 1, translateY: 0, transition: { duration: 0.6 }}}
             exit={{ opacity: 0, translateY: 0}}
         >
             <Flex
