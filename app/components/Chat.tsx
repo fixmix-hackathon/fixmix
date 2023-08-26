@@ -29,9 +29,11 @@ const Chat = ({ role, content, fromStorage }: Message) => {
                 clearTimeout(timeoutId)
             }
         }
-        Prism.highlightAll();
     }, [content, currentIndex, fromStorage])
 
+    useEffect(() => {
+        Prism.highlightAll();
+    }, [chatMessage, content]);
     return (
         <motion.div
             style={{
