@@ -41,7 +41,6 @@ export default function Google(){
             supabaseClient={supabase}
             appearance={{ 
                 theme: ThemeSupa,
-                // variablesは省略可
                 variables: {
                     default: {
                         fonts: {
@@ -74,6 +73,7 @@ export default function Google(){
                 access_type: 'offline',
                 prompt: 'consent',
                 hd: 'domain.com',
+                redirectTo: 'https://fam-message.vercel.app/'
             }}
             onlyThirdPartyProviders
         />
