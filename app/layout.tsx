@@ -6,7 +6,7 @@ import Header from './header'
 import Main from "./main"
 
 export const metadata: Metadata = {
-  title: 'fix-mix（仮）',
+  title: 'Fam',
   description: 'チームfixmixの作品',
 }
 

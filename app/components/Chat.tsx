@@ -91,7 +91,6 @@ const Chat = ({ role, content, fromStorage }: Message) => {
                             fontWeight={500}
                             color="black"
                         >
-                            GPT
                             <Flex
                                 alignSelf="flex-end"
                             >
@@ -99,6 +98,7 @@ const Chat = ({ role, content, fromStorage }: Message) => {
                                 <CopyToClipboardButton textToCopy={chatMessage} />
                             )}
                             </Flex>
+                            fam
                         </Flex>
                     )}
                     { role === "user" && (
