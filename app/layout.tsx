@@ -1,4 +1,5 @@
 import './globals.css'
+import './prism.css'
 import type { Metadata } from 'next'
 import Footer from './footer'
 import Header from './header'
@@ -16,6 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
+      <script src="prism.js" defer></script>
       <link rel="icon" href="/favicon.ico" sizes="any" />
       <head />
       <body className="min-h-screen bg-white md:bg-gray-100">

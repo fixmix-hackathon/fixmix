@@ -3,6 +3,9 @@ import { motion } from "framer-motion"
 import { Avatar, Flex } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import * as marked from 'marked';
+import * as marked from 'marked'
+import Prism from 'prismjs'
+import 'prismjs/themes/prism.css'// または好きなテーマ
 
 const Chat = ({ role, content, fromStorage }: Message) => {
     const [chatMessage, setChatMessage] = useState("")
@@ -27,6 +30,7 @@ const Chat = ({ role, content, fromStorage }: Message) => {
                 clearTimeout(timeoutId)
             }
         }
+        Prism.highlightAll();
     }, [content, currentIndex, fromStorage])
 
     return (
