@@ -44,7 +44,7 @@ const InputForm = ({ onSubmit }: InputFormProps) => {
             className="group relative px-4 py-2 overflow-hidden rounded-lg bg-white text-lg shadow font-mono ml-4 px-4 py-2 text-black "
         >
             <div className="absolute inset-0 w-1.5 bg-amber-300 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
-            <span className="relative text-black group-hover:text-white">送信</span>
+            <span className="relative text-black-600 font-semibold md:text-1xl group-hover:text-white">送信</span>
         </button>
         </form>
     )
