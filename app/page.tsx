@@ -23,6 +23,7 @@ const Home: NextPage = () => {
     },
   ]
 
+  const [chats, setChats] = useState<Message[]>(initialChats);  
 
   const [isSubmitting, setIsSubmitting] = useState(false)
 
