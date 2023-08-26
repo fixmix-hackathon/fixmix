@@ -10,6 +10,7 @@ import CopyToClipboardButton from "./CopyToClipboardButton"
 const Chat = ({ role, content, fromStorage }: Message) => {
     const [chatMessage, setChatMessage] = useState("")
     const [currentIndex, setCurrentIndex] = useState(0)
+    const [showClipboard, setShowClipboard] = useState(false)
 
     useEffect(() => {
         console.log('fromStorage:', fromStorage);
@@ -30,7 +31,10 @@ const Chat = ({ role, content, fromStorage }: Message) => {
                 clearTimeout(timeoutId)
             }
         }
-    }, [content, currentIndex, fromStorage])
+        if (chatMessage === content) {
+            setShowClipboard(true);
+        }
+    }, [content, currentIndex, fromStorage, chatMessage])
 
     useEffect(() => {
         Prism.highlightAll();
@@ -91,7 +95,9 @@ const Chat = ({ role, content, fromStorage }: Message) => {
                             <Flex
                                 alignSelf="flex-end"
                             >
+                            {showClipboard && (
                                 <CopyToClipboardButton textToCopy={chatMessage} />
+                            )}
                             </Flex>
                         </Flex>
                     )}
