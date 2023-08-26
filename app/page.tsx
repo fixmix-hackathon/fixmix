@@ -22,14 +22,18 @@ const Home: NextPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   useEffect(() => {
-    const storedChats = JSON.parse(localStorage.getItem('chats') || '[]').map(
-      (chat: Message) => ({
-        ...chat,
-        fromStorage: true,
-      })
-    )
-    if (storedChats.length > 0) {
-      setChats(storedChats)
+    try {
+      const storedChats = JSON.parse(localStorage.getItem('chats') || '[]').map(
+        (chat: Message) => ({
+          ...chat,
+          fromStorage: true,
+        })
+      )
+      if (storedChats.length > 0) {
+        setChats(storedChats)
+      }
+    } catch (error) {
+      console.error("JSON parsing failed:", error);
     }
   }, [])
 
