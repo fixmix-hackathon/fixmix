@@ -74,6 +74,11 @@ const Home: NextPage = () => {
             return <Chat role={chat.role} content={chat.content} key={index} fromStorage={chat.fromStorage} />;
           })}
         </AnimatePresence>
+        {isSubmitting && (
+          <Flex alignSelf="flex-start" px="2rem" py="0.5rem">
+            <ThreeDotsLoader />
+          </Flex>
+        )}
       </div>
       <InputForm onSubmit={handleSubmit} />
     </div>
