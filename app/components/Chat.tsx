@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import * as marked from 'marked'
 import Prism from 'prismjs'
 import 'prismjs/themes/prism.css'// または好きなテーマ
+import CopyToClipboardButton from "./CopyToClipboardButton"
 
 const Chat = ({ role, content, fromStorage }: Message) => {
     const [chatMessage, setChatMessage] = useState("")
@@ -87,6 +88,11 @@ const Chat = ({ role, content, fromStorage }: Message) => {
                             color="black"
                         >
                             GPT
+                            <Flex
+                                alignSelf="flex-end"
+                            >
+                                <CopyToClipboardButton textToCopy={chatMessage} />
+                            </Flex>
                         </Flex>
                     )}
                     { role === "user" && (
