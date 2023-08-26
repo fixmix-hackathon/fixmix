@@ -3,7 +3,7 @@ import './prism.css'
 import type { Metadata } from 'next'
 import Footer from './footer'
 import Header from './header'
-import Main from "./main";
+import Main from "./main"
 
 export const metadata: Metadata = {
   title: 'fix-mix（仮）',

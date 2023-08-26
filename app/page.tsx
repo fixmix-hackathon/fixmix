@@ -35,7 +35,7 @@ const Home: NextPage = () => {
   const handleSubmit = async (message: Message) => {
     try {
       setIsSubmitting(true);
-      setChats((prev) => [...prev, message]);
+      setChats((prev) => [...prev, message])
 
       // ChatGPT APIと通信
       const response = await fetch("/api/messages", {
