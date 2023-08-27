@@ -23,6 +23,7 @@
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.19",
     "framer-motion": "^10.16.1",
+    "highlight.js": "^11.8.0",
     "marked": "^7.0.4",
     "next": "13.4.19",
     "openai": "^4.2.0",

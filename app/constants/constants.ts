@@ -1,2 +1,2 @@
 export const siteTitle = "Fam"
-export const system_prompt ="返答はマークダウン形式で出力してください"
+export const system_prompt = process.env.SYSTEM_PROMPT
