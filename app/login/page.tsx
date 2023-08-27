@@ -74,8 +74,7 @@ export default function Google() {
       queryParams={{
         access_type: "offline",
         prompt: "consent",
-        // redirectTo: "https://znduoxdtpsjpugmsursb.supabase.co/auth/v1/callback",
-        redirectTo: "http://localhost:3000/Redirect",
+        redirectTo: "https://znduoxdtpsjpugmsursb.supabase.co/auth/v1/callback"
       }}
       onlyThirdPartyProviders
     />
