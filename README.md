@@ -1,34 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# fαm ![](https://fam-message.vercel.app/favicon-32x32.png)
+### 教育機関向けChatGPTソリューション
 
-## Getting Started
+### 概要
 
-First, run the development server:
+fαmは、関西ビギナーズハッカソン2023で開発された、チームfixmixによる教育向けChatGPTプロダクトです。 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+このプロダクトを通して、我々は塾を始めとする教育機関でChatGPTを活用することができる方法を提供します。
+通常の1対1のChatGPTとは異なり、fαmは1つのChatGPTインスタンスを複数のユーザー（生徒と教師）が同時に利用できるグループ型の対話を実現します。
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 特徴
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **グループインタラクション：** fαmは、複数のユーザーが1つのChatGPTインスタンスに同時に参加できるようにします。これにより、共同学習とリアルタイムの関与が促進されます。
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **教師によるモニタリング：** fαmを使用することで、教師はChatGPTと生徒との対話を監視することができます。これにより、安全でかつ効率的な学習環境を維持できます。
 
-## Learn More
+- **指導のサポート：** 教師はグループチャットセッション中に指導やアドバイスを提供でき、学習体験を向上させ、生徒の疑問に対処できます。
 
-To learn more about Next.js, take a look at the following resources:
+### 技術スタック
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **フロントエンド：** TypeScript, Next.js
+- **バックエンド：** Python (Flask)
+- **サーバー：** Vercel
+- **データベース：** Supabase
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### お問い合わせ
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+ご質問やご指摘、その他お問い合わせがある場合は、<br/>
+https://forms.gle/HANC6MqKSKXdx2pU9 までお気軽にご連絡ください。
