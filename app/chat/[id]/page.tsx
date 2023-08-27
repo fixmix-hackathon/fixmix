@@ -26,7 +26,7 @@ const ChatPage: NextPage = () => {
     async () => {
       const data = await supabase.auth.getUser();
 
-      console.log(data?.data.user?.id);
+      console.log("テスト", data?.data.user?.id);
       //   setUserId(data?.data.user?.id);
     };
   }, []);
@@ -40,7 +40,7 @@ const ChatPage: NextPage = () => {
         .from("chats")
         .select("*")
         .eq("user_id", userId);
-
+      console.log(userId);
       if (error) {
         console.error("Error fetching data: ", error);
       } else {
