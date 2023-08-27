@@ -23,7 +23,7 @@ export default async function handler(
     const message = req.body.message;
 
     // GPTのMODELを環境変数から取得
-    const env_model = process.env.OPENAI_MODEL;
+    const env_model: string = process.env.OPENAI_MODEL;
 
     try {
         // APIとやり取り
