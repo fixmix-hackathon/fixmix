@@ -73,16 +73,11 @@ const Chat = ({ role, content, fromStorage }: Message) => {
             >
                 <Avatar
                     name={role === "user" ? "Me" : "fam"}
-                    w="40px"
-                    h="40px"
+                    w="45px"
+                    h="45px"
                     src={
                         role === "assistant"
-                            ? <Image
-                            src="/famAvatarImg.png"
-                            height={40}
-                            width={40}
-                            alt="Assistant Avatar"
-                            />
+                            ? "/famAvatarImg.png"
                             : "https://openmoji.org/data/color/svg/1F473.svg"
                     }
                 />
