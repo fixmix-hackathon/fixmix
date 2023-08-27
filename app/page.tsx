@@ -13,14 +13,7 @@ import { useEffect } from "react"
 import Drag from "./components/Grigri/index"
 
 const Home: NextPage = () => {
-  const [chats, setChats] = useState<Message[]>([
-    {
-      role: "system",
-      content: system_prompt,
-    },
-  ])
-
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [chats, setChats] = useState<Message[]>([]);  // 空の配列を初期値とする
 
   useEffect(() => {
     try {
@@ -29,16 +22,33 @@ const Home: NextPage = () => {
           ...chat,
           fromStorage: true,
         })
-      )
+      );
       if (storedChats.length > 0) {
-        setChats(storedChats)
+        setChats(storedChats);
+      } else {
+        // ローカルストレージが空の場合、初期値を設定
+        setChats([
+          {
+            role: "user",
+            content: "こんにちは！はじめまして！",
+            fromStorage: true,
+          },
+          {
+            role: "assistant",
+            content: "はじめまして！Famです",
+            fromStorage: true,
+          }
+        ]);
       }
     } catch (error) {
-      console.error("JSON parsing failed:", error);
+      console.error("JSON parsing failed:", error)
     }
   }, [])
 
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
   useEffect(() => {
+    console.log("Current chats:", chats)
     if (chats.length > 0) {
       localStorage.setItem('chats', JSON.stringify(chats));
     }
@@ -82,11 +92,11 @@ const Home: NextPage = () => {
     <div className="flex flex-col">
       <div className="w-full max-w-2xl bg-white md:rounded-lg md:shadow-md p-4 md:p-10 mt-10 mb-0">
         <div className="mb-10">
-          <AnimatePresence>
-            {chats.slice(1, chats.length).map((chat, index) => {
-              return <Chat role={chat.role} content={chat.content} key={index} fromStorage={chat.fromStorage} />;
-            })}
-          </AnimatePresence>
+        <AnimatePresence>
+          {chats.filter(chat => chat.role !== 'system').map((chat, index) => {
+            return <Chat role={chat.role} content={chat.content} key={index} fromStorage={chat.fromStorage} />
+          })}
+        </AnimatePresence>
           {isSubmitting && (
             <Flex alignSelf="flex-start" px="2rem" py="0.5rem">
               <ThreeDotsLoader />
