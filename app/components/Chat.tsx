@@ -73,7 +73,7 @@ const Chat = ({ role, content, fromStorage }: Message) => {
                 flexDir={role === "assistant" ? "row" : "row-reverse"}
             >
                 <Avatar
-                    name={role === "user" ? "Me" : "fam"}
+                    name={role === "user" ? "Me" : "Fam"}
                     w="45px"
                     h="45px"
                     src={
@@ -129,7 +129,13 @@ const Chat = ({ role, content, fromStorage }: Message) => {
                             あなた
                         </Flex>
                     )}
-                    { role === "assistant" ? <div dangerouslySetInnerHTML={{ __html: marked.parse(chatMessage) }} />
+                    { role === "assistant" ? 
+                    <div
+                        dangerouslySetInnerHTML={{ __html: marked.parse(chatMessage) }}
+                        style={{
+                            whiteSpace: 'pre-wrap', // overflowWrap: 'break-word'
+                        }}
+                    />
                     : <div dangerouslySetInnerHTML={{ __html: marked.parse(content) }} /> }
                 </Flex>
             </Flex>

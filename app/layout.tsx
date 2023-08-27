@@ -6,10 +6,10 @@ import Header from './header'
 import Main from "./main"
 
 export const metadata: Metadata = {
-  title: 'Fam',
+  title: 'fam',
   description: 'チームfixmixの作品',
   openGraph: {
-    title: 'Fam',
+    title: 'fam',
     description: 'チームfixmixの作品',
     images: '/famIcon.png',
   },
