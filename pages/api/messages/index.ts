@@ -22,13 +22,12 @@ export default async function handler(
     // GPTに送るメッセージを取得
     const message = req.body.message;
 
-    // GPTのMODELを環境変数から取得
-    const env_model: string = process.env.OPENAI_MODEL;
+    const model = process.env.OPENAI_API_MODEL as string;
 
     try {
         // APIとやり取り
         const completion = await openai.chat.completions.create({
-            model: env_model,
+            model: model,
             messages: message,
             temperature: 1.0,
             max_tokens: 700,
