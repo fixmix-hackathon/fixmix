@@ -4,11 +4,12 @@ import { Flex } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
-import Chat from "../../components/Chat";
-import ThreeDotsLoader from "../../components/ThreeDotsLoader";
-import InputForm from "../../components/InputForm";
-import { Message } from "../../types/custom";
+import Chat from "../components/Chat";
+import ThreeDotsLoader from "../components/ThreeDotsLoader";
+import InputForm from "../components/InputForm";
+import { Message } from "../types/custom";
 import { createClient } from "@supabase/supabase-js";
+import { getUser } from "../utils/getUser";
 
 const supabase = createClient(
   "https://znduoxdtpsjpugmsursb.supabase.co",
@@ -21,14 +22,16 @@ const ChatPage: NextPage = () => {
   // メッセージ送信中かどうかを管理
   const [isSubmitting, setIsSubmitting] = useState(false);
   // 現在のユーザーIDを管理
-  const [userId, setUserId] = useState(null);
+  const [userId, setUserId] = useState("");
 
   // ユーザーIDを取得
   useEffect(() => {
     async () => {
-      const data = await supabase.auth.getUser();
+      const userid = await getUser();
+      if (!userid) return;
+      setUserId(userid);
 
-      console.log("テスト", data?.data.user?.id);
+      console.log("テスト", userid);
       //   setUserId(data?.data.user?.id);
     };
   }, []);
