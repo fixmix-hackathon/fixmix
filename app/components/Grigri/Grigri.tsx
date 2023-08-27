@@ -7,8 +7,8 @@ const Grigri = () => {
 
     return (
         <div>
-        <motion.div className="absolute w-32 h-32 bg-black rounded-md top-[calc(75%-24px)] left-[calc(75%-24px)] opacity-20" ref={constraintsRef} />
-        <motion.div className="absolute w-24 h-24 bg-white rounded-md top-[calc(75%-12px)] left-[calc(75%-12px)]" drag dragConstraints={constraintsRef} />
+        <motion.div className="absolute w-20 h-20 bg-black rounded-lg top-[calc(75%-24px)] left-[calc(80%-12px)] opacity-20" ref={constraintsRef} />
+        <motion.div className="absolute w-16 h-16 bg-slate-50 rounded-lg top-[calc(75%-12px)] left-[calc(80%-6px)]" drag dragConstraints={constraintsRef} />
         </div>
     )
 }
