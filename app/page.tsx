@@ -10,6 +10,7 @@ import { Message } from "./types/custom"
 import ThreeDotsLoader from "./components/ThreeDotsLoader"
 import { system_prompt } from "./constants/constants"
 import { useEffect } from "react"
+import Drag from "./components/Grigri/index"
 
 const Home: NextPage = () => {
   const [chats, setChats] = useState<Message[]>([
@@ -78,22 +79,28 @@ const Home: NextPage = () => {
   }
 
   return (
-    <div className="w-full max-w-2xl bg-white md:rounded-lg md:shadow-md p-4 md:p-10 my-10">
-      <div className="mb-10">
-        <AnimatePresence>
-          {chats.slice(1, chats.length).map((chat, index) => {
-            return <Chat role={chat.role} content={chat.content} key={index} fromStorage={chat.fromStorage} />;
-          })}
-        </AnimatePresence>
-        {isSubmitting && (
-          <Flex alignSelf="flex-start" px="2rem" py="0.5rem">
-            <ThreeDotsLoader />
-          </Flex>
-        )}
+    <div className="flex flex-col">
+      <div className="w-full max-w-2xl bg-white md:rounded-lg md:shadow-md p-4 md:p-10 mt-10 mb-0">
+        <div className="mb-10">
+          <AnimatePresence>
+            {chats.slice(1, chats.length).map((chat, index) => {
+              return <Chat role={chat.role} content={chat.content} key={index} fromStorage={chat.fromStorage} />;
+            })}
+          </AnimatePresence>
+          {isSubmitting && (
+            <Flex alignSelf="flex-start" px="2rem" py="0.5rem">
+              <ThreeDotsLoader />
+            </Flex>
+          )}
+        </div>
+        <InputForm onSubmit={handleSubmit} />
       </div>
-      <InputForm onSubmit={handleSubmit} />
+      <div className="h-32">
+        <Drag />
+      </div>
     </div>
   )
+  
 }
 
 export default Home
