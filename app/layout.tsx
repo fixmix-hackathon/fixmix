@@ -7,10 +7,10 @@ import Main from "./main"
 
 export const metadata: Metadata = {
   title: 'fαm',
-  description: 'チームfixmixの作品',
+  description: 'やさしいAI。ココロ踊る、魔法のコトバ。',
   openGraph: {
     title: 'fαm',
-    description: 'チームfixmixの作品',
+    description: 'やさしいAI。ココロ踊る、魔法のコトバ。',
     images: '/famIcon.png',
   },
 }
