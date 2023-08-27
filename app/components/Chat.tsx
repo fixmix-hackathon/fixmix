@@ -50,9 +50,9 @@ const Chat = ({ role, content, fromStorage }: Message) => {
         }
     }, [content, currentIndex, fromStorage, chatMessage])
 
-    useEffect(() => {
-        Prism.highlightAll();
-    }, [chatMessage, content]);
+    // useEffect(() => {
+    //     Prism.highlightAll();
+    // }, [chatMessage, content]);
     
     return (
         <motion.div
