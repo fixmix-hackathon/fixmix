@@ -1,3 +1,5 @@
+"use client";
+
 import { Flex } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import { useState, useEffect } from "react";

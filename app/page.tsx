@@ -2,7 +2,7 @@
 
 import { Flex } from "@chakra-ui/react";
 import type { NextPage } from "next";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import Chat from "./components/Chat";
 import InputForm from "./components/InputForm";
@@ -11,9 +11,42 @@ import ThreeDotsLoader from "./components/ThreeDotsLoader";
 import { system_prompt } from "./constants/constants";
 import { useEffect } from "react";
 import Drag from "./components/Grigri/index";
+import { createClient } from "@supabase/supabase-js";
 
 const Home: NextPage = () => {
   const [chats, setChats] = useState<Message[]>([]); // 空の配列を初期値とする
+
+  const currentUser = useRef("");
+
+  const supabase = createClient(
+    "https://znduoxdtpsjpugmsursb.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpuZHVveGR0cHNqcHVnbXN1cnNiIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTI5NDE0ODQsImV4cCI6MjAwODUxNzQ4NH0.EMkadkV31g8zPVWUdVVzGvpOkYADVoe3WTEptsKBjb4"
+  );
+
+  useEffect(() => {
+    const fetchData = async () => {
+      console.log("テスト1");
+      const data = await supabase.auth.getSession();
+      console.log("テスト", data);
+      if (data.data.session !== null) {
+        // supabaseに用意されている現在ログインしているユーザーを取得する関数
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+        if (!user) return; // ユーザーがいない場合は終了
+        // currentUserにユーザーのメールアドレスを格納
+        currentUser.current = user.id;
+      }
+
+      if (process.env.NODE_ENV === "development") {
+        location.href = `http://localhost:3000/chat/${currentUser.current}`;
+      } else {
+        location.href = `http://fam-message.vercel.app/chat/${currentUser.current}`;
+      }
+    };
+
+    fetchData();
+  }, []);
 
   useEffect(() => {
     try {
