@@ -6,6 +6,20 @@ import * as marked from 'marked'
 import Prism from 'prismjs'
 import 'prismjs/themes/prism.css'// または好きなテーマ
 import CopyToClipboardButton from "./CopyToClipboardButton"
+import hljs from 'highlight.js'
+// githubスタイルを導入する
+import 'highlight.js/styles/github.css'
+import Image from 'next/image'
+import localImage from "../../public/famAvatarImg.png"
+
+marked.setOptions({
+    highlight: function(code, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+            return hljs.highlight(lang, code).value;
+        }
+        return hljs.highlightAuto(code).value
+    }
+});
 
 const Chat = ({ role, content, fromStorage }: Message) => {
     const [chatMessage, setChatMessage] = useState("")
@@ -58,12 +72,17 @@ const Chat = ({ role, content, fromStorage }: Message) => {
                 flexDir={role === "assistant" ? "row" : "row-reverse"}
             >
                 <Avatar
-                    name={role === "user" ? "Me" : "GPT"}
+                    name={role === "user" ? "Me" : "fam"}
                     w="40px"
                     h="40px"
                     src={
                         role === "assistant"
-                            ? "https://openmoji.org/data/color/svg/1F9DE.svg"
+                            ? <Image
+                            src="/famAvatarImg.png"
+                            height={40}
+                            width={40}
+                            alt="Assistant Avatar"
+                            />
                             : "https://openmoji.org/data/color/svg/1F473.svg"
                     }
                 />
