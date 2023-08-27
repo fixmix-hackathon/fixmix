@@ -53,6 +53,7 @@ const Chat = ({ role, content, fromStorage }: Message) => {
     useEffect(() => {
         Prism.highlightAll();
     }, [chatMessage, content]);
+    
     return (
         <motion.div
             style={{
@@ -112,7 +113,7 @@ const Chat = ({ role, content, fromStorage }: Message) => {
                                 <CopyToClipboardButton textToCopy={chatMessage} />
                             )}
                             </Flex>
-                            fam
+                            ファム
                         </Flex>
                     )}
                     { role === "user" && (
