@@ -8,6 +8,11 @@ import Main from "./main"
 export const metadata: Metadata = {
   title: 'Fam',
   description: 'チームfixmixの作品',
+  openGraph: {
+    title: 'Fam',
+    description: 'チームfixmixの作品',
+    images: '/famIcon.png',
+  },
 }
 
 export default function RootLayout({
