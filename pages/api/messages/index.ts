@@ -25,7 +25,7 @@ export default async function handler(
     try {
         // APIとやり取り
         const completion = await openai.chat.completions.create({
-            model: "gpt-4",
+            model: "gpt-3.5-turbo",
             messages: message,
             temperature: 1.0,
             max_tokens: 700,
