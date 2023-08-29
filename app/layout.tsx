@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'fαm',
     description: '使い心地にこだわったＡＩチャット',
-    images: '/famIcon.png',
+    images: '/openGraphImg.png',
   },
 }
 
