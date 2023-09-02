@@ -28,6 +28,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/components/ThreeDotsLoader.tsx"
-  ],
+, "app/components/editor/plugins/ToolbarPlugin.js"  ],
   "exclude": ["node_modules"]
 }
