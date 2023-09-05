@@ -78,7 +78,7 @@ const Chat = ({ role, content, fromStorage }: Message) => {
                     h="55px"
                     src={
                         role === "assistant"
-                            ? "/clearFam2.png"
+                            ? "/fam_logo (100 × 100 px).png"
                             : "https://openmoji.org/data/color/svg/1F473.svg"
                     }
                 />
