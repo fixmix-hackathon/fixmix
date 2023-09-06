@@ -11,6 +11,7 @@ import hljs from 'highlight.js'
 import 'highlight.js/styles/github.css'
 import Image from 'next/image'
 import localImage from "../../public/famAvatarImg.png"
+import styles from './CodeBlock.module.css'
 
 marked.setOptions({
     highlight: function(code, lang) {
@@ -18,7 +19,8 @@ marked.setOptions({
             return hljs.highlight(lang, code).value;
         }
         return hljs.highlightAuto(code).value
-    }
+    },
+    langPrefix: 'language-', 
 });
 
 const Chat = ({ role, content, fromStorage }: Message) => {
@@ -74,7 +76,7 @@ const Chat = ({ role, content, fromStorage }: Message) => {
             >
                 <Avatar
                     name={role === "user" ? "Me" : "Fam"}
-                    w="45px"
+                    w="auto"
                     h="55px"
                     src={
                         role === "assistant"
@@ -132,9 +134,7 @@ const Chat = ({ role, content, fromStorage }: Message) => {
                     { role === "assistant" ? 
                     <div
                         dangerouslySetInnerHTML={{ __html: marked.parse(chatMessage) }}
-                        style={{
-                            whiteSpace: 'pre-wrap', // overflowWrap: 'break-word'
-                        }}
+                        className={styles.markdown}
                     />
                     : <div dangerouslySetInnerHTML={{ __html: marked.parse(content) }} /> }
                 </Flex>
