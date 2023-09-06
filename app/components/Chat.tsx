@@ -74,7 +74,7 @@ const Chat = ({ role, content, fromStorage }: Message) => {
             >
                 <Avatar
                     name={role === "user" ? "Me" : "Fam"}
-                    w="45px"
+                    w="auto"
                     h="55px"
                     src={
                         role === "assistant"
