@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Message } from "../types/custom";
 import Editor from "./editor/Editor";
-import "../../styles.css";
+import "./editor/styles.css";
 
 
 type InputFormProps = {
