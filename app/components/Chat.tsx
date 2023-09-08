@@ -136,7 +136,9 @@ const Chat = ({ role, content, fromStorage }: Message) => {
                         dangerouslySetInnerHTML={{ __html: marked.parse(chatMessage) }}
                         className={styles.markdown}
                     />
-                    : <div dangerouslySetInnerHTML={{ __html: marked.parse(content) }} /> }
+                    : <div dangerouslySetInnerHTML={{ __html: marked.parse(content) }}
+                        className={styles.markdown}
+                    /> }
                 </Flex>
             </Flex>
         </motion.div>

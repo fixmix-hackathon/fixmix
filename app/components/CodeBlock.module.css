@@ -1,4 +1,4 @@
-.markdown pre, .markdown code {
+.markdown pre, .markdown code, .markdown p {
   white-space: pre-wrap !important;
   overflow-wrap: anywhere !important;
 }
