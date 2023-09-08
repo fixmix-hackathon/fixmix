@@ -2,3 +2,12 @@
   white-space: pre-wrap !important;
   overflow-wrap: anywhere !important;
 }
+
+.markdown :not(pre) > code {
+  background-color: rgba(135,131,120,.15);
+  color: rgba(51, 126, 169, 1);
+  border-radius: 3px;
+  font-size: 85%;
+  font-weight: 600;
+  padding: 0.2em 0.4em;
+}
