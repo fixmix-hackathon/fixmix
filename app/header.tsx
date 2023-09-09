@@ -5,32 +5,10 @@ import { siteTitle } from "./constants/constants"
 import Link from "next/link"
 
 const Header = () => {
-    const [showHeader, setShowHeader] = useState(true)
-
-    useEffect(() => {
-        const handleScroll = () => {
-
-        const currentScrollPos = window.scrollY
-
-        if (currentScrollPos > 1200) {
-            setShowHeader(false)
-        } else {
-            setShowHeader(true)
-        }
-        }
-
-        window.addEventListener("scroll", handleScroll)
-
-        return () => {
-        window.removeEventListener("scroll", handleScroll)
-        }
-    }, [])
 
     return (
         <header
-        className={`relative py-5 bg-white shadow-md ${
-            showHeader ? "sticky top-0 z-10" : "hidden"
-        }`}
+        className={`relative py-5 bg-white shadow-md sticky top-0 z-10`}
         >
         <div className="flex justify-between px-8">
             <Link
