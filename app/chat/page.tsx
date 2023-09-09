@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import { Flex } from "@chakra-ui/react";
-import type { NextPage } from "next";
-import { useState, useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
-import Chat from "../components/Chat";
-import ThreeDotsLoader from "../components/ThreeDotsLoader";
-import InputForm from "../components/InputForm";
-import { Message } from "../types/custom";
-import { createClient } from "@supabase/supabase-js";
-import { getUser } from "../utils/getUser";
+import { Flex } from '@chakra-ui/react';
+import type { NextPage } from 'next';
+import { useState, useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
+import Chat from '../components/Chat';
+import ThreeDotsLoader from '../components/ThreeDotsLoader';
+import InputForm from '../components/InputForm';
+import { Message } from '../types/custom';
+import { createClient } from '@supabase/supabase-js';
+import { getUser } from '../utils/getUser';
 
 const supabase = createClient(
-  "https://znduoxdtpsjpugmsursb.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpuZHVveGR0cHNqcHVnbXN1cnNiIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTI5NDE0ODQsImV4cCI6MjAwODUxNzQ4NH0.EMkadkV31g8zPVWUdVVzGvpOkYADVoe3WTEptsKBjb4"
+  'https://znduoxdtpsjpugmsursb.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpuZHVveGR0cHNqcHVnbXN1cnNiIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTI5NDE0ODQsImV4cCI6MjAwODUxNzQ4NH0.EMkadkV31g8zPVWUdVVzGvpOkYADVoe3WTEptsKBjb4'
 );
 
 const ChatPage: NextPage = () => {
@@ -22,7 +22,7 @@ const ChatPage: NextPage = () => {
   // メッセージ送信中かどうかを管理
   const [isSubmitting, setIsSubmitting] = useState(false);
   // 現在のユーザーIDを管理
-  const [userId, setUserId] = useState("");
+  const [userId, setUserId] = useState('');
 
   // ユーザーIDを取得
   useEffect(() => {
@@ -31,7 +31,7 @@ const ChatPage: NextPage = () => {
       if (!userid) return;
       setUserId(userid);
 
-      console.log("テスト", userid);
+      console.log('テスト', userid);
       //   setUserId(data?.data.user?.id);
     };
   }, []);
@@ -42,12 +42,12 @@ const ChatPage: NextPage = () => {
 
     const fetchData = async () => {
       const { data, error } = await supabase
-        .from("chats")
-        .select("*")
-        .eq("user_id", userId);
+        .from('chats')
+        .select('*')
+        .eq('user_id', userId);
       console.log(userId);
       if (error) {
-        console.error("Error fetching data: ", error);
+        console.error('Error fetching data: ', error);
       } else {
         setChats(data);
       }
@@ -62,10 +62,10 @@ const ChatPage: NextPage = () => {
       setChats((prev) => [...prev, message]);
 
       // Python Flaskサーバーにデータを送信
-      const response = await fetch("http://localhost:5000/api/save_chat", {
-        method: "POST",
+      const response = await fetch('http://localhost:5000/api/save_chat', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           user_id: userId,
@@ -85,7 +85,7 @@ const ChatPage: NextPage = () => {
       // 成功した場合、新しいメッセージを追加
       setChats((prev) => [...prev, data.result as Message]);
     } catch (error) {
-      console.error("Error:", error);
+      console.error('Error:', error);
     } finally {
       setIsSubmitting(false);
     }
