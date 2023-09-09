@@ -11,7 +11,7 @@ import hljs from 'highlight.js';
 import 'highlight.js/styles/github.css';
 import Image from 'next/image';
 import localImage from '../../public/famAvatarImg.png';
-import styles from './CodeBlock.module.css';
+import styles from './Markdown.module.css';
 
 marked.setOptions({
   highlight: function (code, lang) {
